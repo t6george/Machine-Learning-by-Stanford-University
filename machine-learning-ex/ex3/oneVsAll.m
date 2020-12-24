@@ -13,6 +13,7 @@ n = size(X, 2);
 
 % You need to return the following variables correctly 
 all_theta = zeros(num_labels, n + 1);
+%disp(size(all_theta));
 
 % Add ones to the X data matrix
 X = [ones(m, 1) X];
@@ -49,7 +50,10 @@ X = [ones(m, 1) X];
 %                 initial_theta, options);
 %
 
-
+for i = 1:num_labels
+    options = optimset('GradObj', 'on', 'MaxIter', 50);
+    all_theta(i,:) = (fmincg (@(t)(lrCostFunction(t, X, (y == mod(i,10)), lambda)), all_theta(i,:)', options))';
+end
 
 
 
@@ -64,3 +68,4 @@ X = [ones(m, 1) X];
 
 
 end
+
