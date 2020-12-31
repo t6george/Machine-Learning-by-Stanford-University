@@ -26,6 +26,14 @@ centroids = zeros(K, n);
 % Note: You can use a for-loop over the centroids to compute this.
 %
 
+freq = zeros(K,1);
+
+for i = 1:m
+    freq(idx(i)) = freq(idx(i)) + 1;
+    centroids(idx(i),:) = centroids(idx(i),:) + X(i,:);
+end
+
+centroids = centroids ./ reshape(repmat(freq, n, 1), size(centroids));
 
 
 
@@ -37,4 +45,5 @@ centroids = zeros(K, n);
 
 
 end
+
 
