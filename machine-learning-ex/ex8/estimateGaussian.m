@@ -22,10 +22,14 @@ sigma2 = zeros(n, 1);
 %
 
 
+mu = (mean(X,1))';
 
+for i = 1:size(X,2)
+    dev = X(:, i) - mu(i);
+    sigma2(i) = dev' * dev;
+end
 
-
-
+sigma2 = sigma2 / size(X,1);
 
 
 
@@ -34,3 +38,4 @@ sigma2 = zeros(n, 1);
 
 
 end
+
