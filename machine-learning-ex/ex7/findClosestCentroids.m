@@ -13,16 +13,6 @@ idx = zeros(size(X,1), 1);
 
 cdists = zeros(K, 1);
 
-% ====================== YOUR CODE HERE ======================
-% Instructions: Go over every example, find its closest centroid, and store
-%               the index inside idx at the appropriate location.
-%               Concretely, idx(i) should contain the index of the centroid
-%               closest to example i. Hence, it should be a value in the 
-%               range 1..K
-%
-% Note: You can use a for-loop over the examples to compute this.
-%
-
 for i = 1:size(X,1)
     for j = 1:K
         v = X(i, :) - centroids(j,:);
@@ -30,11 +20,6 @@ for i = 1:size(X,1)
     end
     [~, idx(i)] = min(cdists);
 end
-
-
-
-
-% =============================================================
 
 end
 
